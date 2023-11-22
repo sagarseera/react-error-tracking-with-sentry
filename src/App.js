@@ -1,7 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect } from 'react';
 
 function App() {
+  const [name, setName] = useEffect();
+  const methodDoesNotExist = (user) => {
+    setName(user.name);
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -17,7 +22,8 @@ function App() {
         >
           Learn React
         </a>
-        <button onClick={() => methodDoesNotExist()}>Break the world</button>
+        My name is {name}
+        <button onClick={() => methodDoesNotExist}>Break the world</button>
       </header>
     </div>
   );
