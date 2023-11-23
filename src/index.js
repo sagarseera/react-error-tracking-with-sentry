@@ -7,13 +7,15 @@ import SentryErrorBoundary from "./SentryErrorBoundary";
 import * as Sentry from "@sentry/react";
 
 Sentry.init({
+    // DNS = where to send the event
     dsn: "https://9f2c29ff882ad9bec277814e62d5a3b9@o4506267693416448.ingest.sentry.io/4506267695841280",
     integrations: [
         new Sentry.BrowserTracing({
             // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
+            environment: process.env.NODE_ENV,
             tracePropagationTargets: [
                 "localhost",
-                /^https:\/\/yourserver\.io\/api/
+                /^https:\/\/react-error-tracking-with-sentry-on1n\.vercel\.app\/api/
             ]
         }),
         new Sentry.Replay()

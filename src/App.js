@@ -1,33 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-import { useState } from 'react';
+import "./App.css";
+import { users } from './mockData/user';
+import Card from "./components/card/Card";
 
 function App() {
-  const [name, setName] = useState();
-  
-  const methodDoesNotExist = (user) => {
-    setName(user.name);
-  }
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        My name is {name}
-        <button onClick={() => methodDoesNotExist()}>Break the world</button>
-      </header>
-    </div>
-  );
+    return (
+        <div className='App'>
+            <div className='main-container'>
+                {users.map((user) => (
+                    <Card key={user.id} user={user} />
+                ))}
+            </div>
+        </div>
+    );
 }
 
 export default App;
